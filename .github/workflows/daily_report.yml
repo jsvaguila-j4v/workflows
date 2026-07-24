@@ -2,9 +2,9 @@ name: Reporte Diario de Vulnerabilidades NVD
 
 on:
   schedule:
-    # Se ejecuta automáticamente todos los días a las 08:00 AM UTC (Ajusta la hora según tu zona)
+    # Se ejecuta todos los días a las 08:00 AM UTC
     - cron: '0 8 * * *'
-  workflow_dispatch: # Permite ejecutar el flujo manualmente desde la interfaz de GitHub
+  workflow_dispatch: # Permite ejecución manual desde la web
 
 jobs:
   run-security-agent:
@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configurar entorno de Python
-        uses: actions/python-spec@v5
+        uses: actions/setup-python@v5   # <-- AQUÍ ESTABA EL CAMBIO (setup-python)
         with:
           python-version: '3.11'
 
